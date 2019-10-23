@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Random;
 
 public class FigureSender {
-    private FigureCreator creator;
     private Map<Integer, FigureCreator> creatorMap = new HashMap<>();
     private Random random = new Random();
 
@@ -21,7 +20,7 @@ public class FigureSender {
         setCreatorsMap();
     }
 
-    private void setCreatorsMap(){
+    private void setCreatorsMap() {
         creatorMap.put(1, new CubeCreator());
         creatorMap.put(2, new ElFigureCreator());
         creatorMap.put(3, new TFormFigureCreator());
@@ -29,14 +28,14 @@ public class FigureSender {
         creatorMap.put(5, new RandomFormFigureCreator());
     }
 
-    public TetrisFigureInterface sendRandomFigure(){
+    public TetrisFigureInterface sendRandomFigure() {
         int randomInt = random.nextInt(5) + 1;
         TetrisFigureInterface figure = creatorMap.get(randomInt).createFigure();
         System.out.println(figure + " was send to users display");
         return figure;
     }
 
-    public void sendTenFigures(){
+    public void sendTenFigures() {
         for (int i = 0; i < 10; i++) {
             sendRandomFigure();
         }
